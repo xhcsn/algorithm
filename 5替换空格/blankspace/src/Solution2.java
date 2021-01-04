@@ -26,7 +26,7 @@ public class Solution2{
                 s.setCharAt(new_length--,'0');
                 s.setCharAt(new_length--,'2');
                 s.setCharAt(new_length--,'%');
-            }else{s
+            }else{
                 s.setCharAt(new_length--,s.charAt(i));
             }
         }
