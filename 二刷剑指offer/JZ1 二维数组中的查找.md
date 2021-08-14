@@ -23,4 +23,28 @@ public class Solution {
 }
 ```
 
-####
+
+#### JZ2 替换空格
+----
+请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
+
+```Java
+//遍历每个字符，如果字符为空格则添加“%20”，否则添加当前字符
+import java.util.*;
+
+public class Solution {
+    public String replaceSpace (String s) {
+        // write code here
+        StringBuilder sb = new StringBuilder();
+        char[] schar = s.toCharArray();
+        for(char c : schar){
+            if(c == ' '){
+                sb.append("%20");
+            }else{
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+}
+```
