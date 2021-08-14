@@ -48,3 +48,63 @@ public class Solution {
     }
 }
 ```
+
+
+#### JZ3 从尾到头打印链表
+----
+输入一个链表的头节点，按链表从尾到头的顺序返回每个节点的值（用数组返回）。
+
+```Java
+//先将链表翻转，再将翻转后的链表打印出来，递归法翻转
+import java.util.ArrayList;
+
+public class Solution {
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        ListNode newHead = reverse(listNode);
+        ListNode cur = newHead;
+        while(cur != null){
+            ans.add(cur.val);
+            cur = cur.next;
+        }
+        return ans;
+    }
+    public ListNode reverse(ListNode head){
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode next = null;
+        while(cur != null){
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//先将链表翻转，再将翻转后的链表打印出来，迭代法翻转
+import java.util.ArrayList;
+
+public class Solution {
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        ListNode newHead = ReverseList(listNode);
+        ListNode cur = newHead;
+        while(cur != null){
+            ans.add(cur.val);
+            cur = cur.next;
+        }
+        return ans;
+    }
+    public ListNode ReverseList(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode next = head.next;
+        ListNode reverse = ReverseList(next);
+        next.next = head;
+        head.next = null;
+        return reverse;
+    }
+}
+```
