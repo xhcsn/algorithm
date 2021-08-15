@@ -108,3 +108,28 @@ public class Solution {
     }
 }
 ```
+
+#### JZ4 重建二叉树
+----
+给定某二叉树的前序遍历和中序遍历，请重建出该二叉树并返回它的头结点。
+
+```Java
+import java.util.Arrays;
+
+public class Solution {
+    public TreeNode reConstructBinaryTree(int [] pre,int [] vin) {
+        if(pre.length == 0) return null;
+        TreeNode root = new TreeNode(pre[0]);
+        int index = 0;
+        for(int i = 0; i < vin.length; i++){
+            if(pre[0] == vin[i]){
+                index = i;
+                break;
+            }
+        }
+        root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, index + 1), Arrays.copyOfRange(vin, 0, index));
+        root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, index + 1, pre.length), Arrays.copyOfRange(vin, index + 1, vin.length));
+        return root;
+    }
+}
+```
