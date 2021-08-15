@@ -165,3 +165,33 @@ public class Solution {
     }
 }
 ```
+
+#### JZ6 旋转数组的最小数字
+----
+把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。
+
+```Java
+//这里的难度在于arr[mid]跟谁比较
+//如果arr[mid]比右端点大，那么在右区间寻找
+//如果arr[mid]比右端点小，那么在左区间寻找
+//如果相等，将右端点减一。
+import java.util.ArrayList;
+public class Solution {
+    public int minNumberInRotateArray(int [] array) {
+        int i = 0;
+        int j = array.length - 1;
+        while(i < j){
+            int mid = (i + j) / 2;
+            if(array[mid] > array[j]){
+                i = mid + 1;
+            }else if(array[mid] < array[j]){
+                j = mid;
+            }else{
+                j--;
+            }
+        }
+        return array[i];
+    }
+}
+```
